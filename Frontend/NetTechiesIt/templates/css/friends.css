@@ -12,7 +12,7 @@ body {
 }
 
 .friends-container {
-    margin-top: -120px;
+    margin-top: -250px;
 }
 
 .friends-container .peoples {
@@ -92,7 +92,7 @@ body {
     border-radius: 25px; /* Закругленные углы */
     padding: 10px 0; /* Отступы внутри панели */
     position: relative;
-    top: 811px;
+    top: 876px;
 }
 
 .under-panel a {

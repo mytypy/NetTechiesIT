@@ -1,0 +1,59 @@
+body, html {
+    height: 100%; /* Убираем ошибки, чтобы body занимал 100% высоты */
+    margin: 0; /* Убираем отступы у body */
+}
+
+body {
+    display: flex; /* Используем Flexbox для центровки */
+    justify-content: center; /* Выравниваем по горизонтали */
+    align-items: center; /* Выравниваем по вертикали */
+    background-image: url('https://img.freepik.com/free-photo/modern-geometrical-background-with-white-triangles_23-2148811537.jpg?t=st=1730295967~exp=1730299567~hmac=0c4879bdbe7b9863f23da26ed605cc26de87a5b4931ab76a4d4e0f4509923963&w=1480');
+    background-size: cover;
+}
+
+.main-block {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 500px;
+    margin-top: -350px;
+
+}
+
+.under-panel {
+    display: flex;
+    justify-content: space-around;
+    width: 500px; /* Ширина панели */
+    background-color: #333; /* Цвет фона */
+    border-radius: 25px; /* Закругленные углы */
+    padding: 10px 0; /* Отступы внутри панели */
+    position: relative;
+    top: 615px;
+}
+
+.under-panel a {
+    color: white; /* Цвет текста */
+    text-decoration: none; /* Убираем подчеркивание */
+    font-size: 18px; /* Размер шрифта */
+}
+
+.under-panel a:hover {
+    text-decoration: underline; /* Подчеркивание при наведении */
+}
+
+.under-panel .nav-item {
+    display: flex;
+    flex-direction: column; /* Выравнивание иконки и текста по колонкам (Делает колонки. В нашем случае колонку с иконкой и подписью под ней)*/
+    align-items: center; /* Центрирование по горизонтали */
+    color: white; /* Цвет текста */
+    text-decoration: none;
+}
+
+.under-panel .nav-item i {
+    font-size: 24px; /* Размер иконок */
+    margin-bottom: 5px; /* Отступ между иконкой и текстом */
+}
+
+.under-panel .nav-item:hover {
+    opacity: 0.7; /* Эффект при наведении */
+}
