@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Чаты - NetTechiesIt</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* Основные стили */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f7f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      height: 100vh;
+    }
+
+    /* Контейнер */
+    .container {
+      display: flex;
+      flex: 1;
+    }
+
+    /* Сайдбар */
+    .sidebar {
+      width: 250px;
+      background-color: #2c3e50;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      justify-content: space-between;
+      height: 100%;
+      transition: width 0.3s ease;
+    }
+
+    .sidebar:hover {
+      width: 300px;
+    }
+
+    .sidebar .logo {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .sidebar .logo img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .sidebar .nav-links {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .sidebar .nav-links li {
+      margin: 15px 0;
+    }
+
+    .sidebar .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar .nav-links a:hover {
+      background-color: #34495e;
+      padding-left: 10px;
+    }
+
+    .sidebar .nav-links a svg {
+      margin-right: 10px;
+    }
+
+    /* Основной контент */
+    .content {
+      flex: 1;
+      background-color: #ecf0f1;
+      padding: 30px;
+      overflow-y: auto;
+      transition: margin-left 0.3s ease;
+    }
+
+    /* Чаты */
+    .chat-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .chat-item {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .chat-item:hover {
+      background-color: #3498db;
+      color: white;
+    }
+
+    .chat-item img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+
+    .chat-item .chat-name {
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    /* Чат */
+    .chat-container {
+      display: none;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      height: 100%;
+      flex-direction: column;
+      transition: all 0.3s ease;
+    }
+
+    .chat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    .chat-header h3 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .messages {
+      flex: 1;
+      overflow-y: auto;
+      margin-bottom: 20px;
+    }
+
+    .message {
+      display: flex;
+      margin-bottom: 10px;
+    }
+
+    .message .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .message .text {
+      max-width: 80%;
+      padding: 10px;
+      background-color: #f1f1f1;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    .message.sent .text {
+      background-color: #3498db;
+      color: white;
+      align-self: flex-end;
+    }
+
+    .message.received .text {
+      background-color: #ecf0f1;
+      color: #2c3e50;
+    }
+
+    /* Инпут для сообщения */
+    .chat-input-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-input {
+      width: 85%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .chat-input:focus {
+      border-color: #3498db;
+    }
+
+    .send-btn {
+      background-color: #3498db;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .send-btn:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Сайдбар -->
+    <div class="sidebar">
+      <div class="logo">
+        NetTechiesIt
+        <div><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4_OnnNWRipITQo-bd-dGcXJzonSdG-M8YmQ&s" alt="Logo"></div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="./profile.html" id="profileTab"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19.5l-7-7 7-7"></path></svg> Профиль</a></li>
+        <li><a href="./chats.html" class="active" id="chatsTab"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19.5l-7-7 7-7"></path></svg> Чаты</a></li>
+        <li><a href="./settings.html" id="settingsTab"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19.5l-7-7 7-7"></path></svg> Настройки</a></li>
+      </ul>
+    </div>
+
+    <!-- Основной контент -->
+    <div class="content">
+      <div class="chat-list">
+        <div class="chat-item" id="chat1">
+          <img src="./photos/db62b378-69ec-4734-bf5d-a4227689a2f7.jpeg" alt="User 1">
+          <div class="chat-name">Настян</div>
+        </div>
+        <div class="chat-item" id="chat2">
+          <img src="./photos/67d70f56-361d-414a-8bbf-224eb77423b9.jpeg" alt="User 2">
+          <div class="chat-name">Зхц какой-то</div>
+        </div>
+        <div class="chat-item" id="chat3">
+          <img src="./photos/49524e80-b231-4925-a37b-74683e5679fa.jpeg" alt="User 3">
+          <div class="chat-name">Меладзе</div>
+        </div>
+      </div>
+
+      <div id="chatContent" class="chat-container">
+        <!-- Заголовок чата -->
+        <div class="chat-header">
+          <h3>Чат с Иваном</h3>
+        </div>
+
+        <!-- Сообщения -->
+        <div class="messages">
+          <div class="message received">
+            <img src="https://via.placeholder.com/40" alt="User" class="avatar">
+            <div class="text">Привет! Как дела?</div>
+          </div>
+          <div class="message sent">
+            <img src="https://via.placeholder.com/40" alt="User" class="avatar">
+            <div class="text">Привет, все отлично! Как ты?</div>
+          </div>
+        </div>
+
+        <!-- Инпут для сообщения -->
+        <div class="chat-input-container">
+          <input type="text" class="chat-input" placeholder="Напишите сообщение...">
+          <button class="send-btn">Отправить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Функция для открытия чатов
+    document.getElementById('chat1').addEventListener('click', function() {
+      openChat('Настяном');
+    });
+    
+    document.getElementById('chat2').addEventListener('click', function() {
+      openChat('Зхц');
+    });
+
+    document.getElementById('chat3').addEventListener('click', function() {
+      openChat('Меладзе');
+    });
+
+    function openChat(name) {
+      const chatHeader = document.querySelector('.chat-header h3');
+      chatHeader.innerText = 'Чат с ' + name;
+
+      const chatContent = document.getElementById('chatContent');
+      chatContent.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
