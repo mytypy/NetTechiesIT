@@ -1,0 +1,86 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+  }
+
+
+.content {
+    flex: 1;
+    background-color: #ecf0f1;
+    padding: 30px;
+    overflow-y: auto;
+  }
+
+.friends-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+.friends-search {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+  }
+
+.friend-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+  }
+
+.friend-item:hover {
+    background: #dfe6e9;
+  }
+
+.friend-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+.friend-actions {
+    margin-left: auto;
+  }
+
+.friend-actions button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+
+.friend-actions button:hover {
+    background: #2980b9;
+  }
+
+@keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+@keyframes fadeInSidebar {
+    to {
+      opacity: 1;
+    }
+  }
+
+
+  /* Стиль при переходе */
+.nav-links a.active {
+    background-color: #2980b9;
+  }
