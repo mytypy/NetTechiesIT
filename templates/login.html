@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../styles/login.css">
+</head>
+<body>
+  <div class="login-card">
+    <h2>Вход</h2>
+    <form>
+      <div class="form-group">
+        <label for="email">Электронная почта</label>
+        <input type="text" id="email" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Пароль</label>
+        <input type="password" id="password" placeholder="ВВедит ваш пароль" required>
+      </div>
+      <button type="submit" class="login-btn">Войти</button>
+    </form>
+    <div class="bottom-text">
+      Нет созданного аккаунта? <a href="http://127.0.0.1:5500/templates/register.html">Зарегистрироваться</a>
+    </div>
+  </div>
+</body>
+</html>

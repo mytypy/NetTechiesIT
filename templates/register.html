@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register</title>
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../styles/register.css">
+</head>
+<body>
+  <div class="register-card">
+    <h2>Регистрация</h2>
+    <form>
+      <div class="form-group">
+        <label for="fullname">Имя</label>
+        <input type="text" id="fullname" placeholder="Джон" required>
+      </div>
+      <div class="form-group">
+        <label for="username">Тег</label>
+        <input type="text" id="username" placeholder="johnny123" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Электронная почта</label>
+        <input type="email" id="email" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Пароль</label>
+        <input type="password" id="password" placeholder="Придумайте пароль" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Повтор пароля</label>
+        <input type="password" id="password_repeat" placeholder="Повторите пароль" required>
+      </div>
+      <button type="submit" class="register-btn">Зарегистрироваться</button>
+    </form>
+    <div class="bottom-text">
+      Уже есть аккаунт? <a href="http://127.0.0.1:5500/templates/login.html">Войти</a>
+    </div>
+  </div>
+</body>
+</html>
