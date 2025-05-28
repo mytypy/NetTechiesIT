@@ -1,0 +1,44 @@
+# ───────────── Node / Vite ─────────────
+Codexy/node_modules/
+Codexy/dist/
+Codexy/.vite/
+
+# ───────────── Конфигурация окружения ─────────────
+Codexy/.env
+Codexy/.env.*.local
+
+# ───────────── Журналы ошибок ─────────────
+Codexy/npm-debug.log*
+Codexy/yarn-debug.log*
+Codexy/yarn-error.log*
+Codexy/pnpm-debug.log*
+Codexy/*.log
+
+# ───────────── Кэш линтеров / форматтеров ─────────────
+Codexy/.eslintcache
+Codexy/.prettiercache
+
+# ───────────── IDE ─────────────
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# ───────────── Системные файлы ─────────────
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*~
+
+# ───────────── TypeScript build cache ─────────────
+Codexy/*.tsbuildinfo
+
+# ───────────── Прочее ─────────────
+Codexy/.pnp*
+Codexy/.npm/
+Codexy/.yarn/
+Codexy/.parcel-cache/
+Codexy/.cache/
