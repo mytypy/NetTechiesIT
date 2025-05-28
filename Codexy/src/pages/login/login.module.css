@@ -1,0 +1,105 @@
+:root {
+    --bg: #f4f7f9;
+    --card: #ffffff;
+    --text: #333;
+    --gray: #777;
+    --border: #e0e0e0;
+    --accent: #1da1f2;
+    --hover: #e8f5fe;
+  }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+  }
+
+  .login_card {
+    background-color: var(--card);
+    padding: 40px 32px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .login_card h2 {
+    text-align: center;
+    margin-bottom: 24px;
+    color: var(--accent);
+    font-size: 26px;
+  }
+
+  .form_group {
+    margin-bottom: 20px;
+  }
+
+  .form_group label {
+    font-size: 14px;
+    margin-bottom: 6px;
+    display: block;
+    color: var(--gray);
+  }
+
+  .form_group input {
+      width: 100%;
+      padding: 12px;
+      font-size: 15px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      outline: none;
+      background-color: #fff;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    
+  .form_group input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(29,161,242,0.15);
+  }
+
+  .login_btn {
+    background-color: var(--accent);
+    color: #fff;
+    border: none;
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .login_btn:hover {
+    background-color: #1990da;
+  }
+
+  .bottom_text {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 18px;
+  }
+
+  .bottom_text a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .bottom_text a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 480px) {
+    .login_card {
+      padding: 32px 24px;
+    }
+  }
