@@ -1,27 +1,28 @@
-import {Link} from 'react-router';
-import styles from "./login.module.css";
+import { Link } from 'react-router-dom';
+import styles from './login.module.css';
+import DataForm from './loginData';
 
 
 export default function Login() {
-    return (
-        <>
-        <div class={styles.login_card}>
-            <h2>Вход</h2>
-            <form>
-            <div class={styles.form_group}>
-                <label for="email">Электронная почта</label>
-                <input type="text" id="email" placeholder="you@example.com" required />
+  return (
+    <div className={styles.loginWrapper}>
+      <div className={styles.loginCard}>
+        <h2 className={styles.heading}>Вход</h2>
+        <form>
+          {
+          DataForm.map(({num , type, id, placeholder, htmlFor, message}) => (
+            <div className={styles.formGroup} key={num}>
+              <label htmlFor={htmlFor} className={styles.label}>{message}</label>
+              <input type={type} id={id} placeholder={placeholder} required className={styles.input} />
             </div>
-            <div class={styles.form_group}> 
-                <label for="password">Пароль</label>
-                <input type="password" id="password" placeholder="Введите ваш пароль" required />
-            </div>
-            <button type="submit" class={styles.login_btn}>Войти</button>
-            </form>
-            <div class={styles.bottom_text}>
-            Нет созданного аккаунта? <Link to="registration/">Регистрация</Link>
-            </div>
+          ))
+        }
+          <button type="submit" className={styles.loginBtn}>Войти</button>
+        </form>
+        <div className={styles.bottomText}>
+          Нет аккаунта? <Link to="/registration" className={styles.link}>Регистрация</Link>
         </div>
-        </>
-    )
+      </div>
+    </div>
+  );
 }

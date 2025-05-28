@@ -1,0 +1,83 @@
+.registerWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: var(--bg);
+  }
+  
+  .registerCard {
+    background-color: var(--card);
+    padding: 40px 32px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    width: 100%;
+    max-width: 450px;
+  }
+  
+  .heading {
+    text-align: center;
+    margin-bottom: 24px;
+    color: var(--accent);
+    font-size: 26px;
+  }
+  
+  .formGroup {
+    margin-bottom: 18px;
+  }
+  
+  .label {
+    font-size: 14px;
+    margin-bottom: 6px;
+    display: block;
+    color: var(--gray);
+  }
+  
+  .input {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    outline: none;
+    background-color: #fff;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+  
+  .input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(29, 161, 242, 0.15);
+  }
+  
+  .registerBtn {
+    background-color: var(--accent);
+    color: #fff;
+    border: none;
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 10px;
+  }
+  
+  .registerBtn:hover {
+    background-color: #1990da;
+  }
+  
+  .bottomText {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 18px;
+  }
+  
+  .link {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
+  
