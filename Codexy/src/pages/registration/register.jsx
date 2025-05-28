@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './registration.module.css';
 import dataForm from './registerData';
+import Button from '../../utils/button/button';
 
 
 export default function Register() {
@@ -17,7 +18,7 @@ export default function Register() {
             </div>
             ))
             }
-          <button type="submit" className={styles.registerBtn}>Зарегистрироваться</button>
+          <Button type="submit" className={styles.registerBtn}>Зарегистрироваться</Button>
         </form>
         <div className={styles.bottomText}>
           Уже есть аккаунт? <Link to="/" className={styles.link}>Войти</Link>

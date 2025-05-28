@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './login.module.css';
 import DataForm from './loginData';
+import Button from '../../utils/button/button';
 
 
 export default function Login() {
@@ -17,7 +18,7 @@ export default function Login() {
             </div>
           ))
         }
-          <button type="submit" className={styles.loginBtn}>Войти</button>
+          <Button type='submit' className={styles.loginBtn}>Войти</Button>
         </form>
         <div className={styles.bottomText}>
           Нет аккаунта? <Link to="/registration" className={styles.link}>Регистрация</Link>
