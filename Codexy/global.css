@@ -6,6 +6,7 @@
     --border: #e0e0e0;
     --accent: #1da1f2;
     --hover: #e8f5fe;
+    --error: #e74c3c;
   }
   
   * {
@@ -19,4 +20,3 @@
     background-color: var(--bg);
     color: var(--text);
   }
-  

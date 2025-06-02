@@ -11,7 +11,7 @@ const DataForm = [
         num: 2,
         type: 'password',
         id: 'password',
-        placeholder: 'Придумайте пароль',
+        placeholder: 'Введите пароль',
         htmlFor: 'password',
         message: 'Пароль'
     }

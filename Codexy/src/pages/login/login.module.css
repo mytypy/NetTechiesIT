@@ -78,3 +78,10 @@
 .link:hover {
   text-decoration: underline;
 }
+
+.errorMessage {
+  font-size: 13px;
+  color: var(--error);
+  margin-top: 6px;
+  display: block; /* Сделать видимым через JS при ошибке */
+}

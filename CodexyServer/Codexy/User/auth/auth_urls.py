@@ -7,6 +7,7 @@ router = SimpleRouter()
 router.register(r'auth', RegistrationView, basename='registartion')
 router.register(r'auth', LoginView, basename='login')
 
+
 urlpatterns = [
     path('api/', include(router.urls)),
 ]

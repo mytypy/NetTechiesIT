@@ -2,17 +2,17 @@ const dataForm = [
     {
         num: 1,
         type: 'text',
-        id: 'fullname',
+        id: 'name',
         placeholder: 'Джон',
-        htmlFor: 'fullname',
+        htmlFor: 'name',
         message: 'Имя'
     },
     {
         num: 2,
         type: 'text',
-        id: 'username',
+        id: 'tag',
         placeholder: 'johnny123',
-        htmlFor: 'username',
+        htmlFor: 'tag',
         message: 'Тег'
     },
     {
