@@ -1,10 +1,10 @@
 from django.http import HttpRequest
-from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from .auth_serializers import RegistrationSerializer, LoginSerializer
-from ..models import UserModel
+from .auth_serializers import RegistrationSerializer
+from ..utils.set_jwt import set_cookies
 
 
 class RegistrationView(ViewSet):
@@ -17,56 +17,23 @@ class RegistrationView(ViewSet):
     def registration(self, request: HttpRequest):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = serializer.save()
-        refresh = RefreshToken.for_user(user)
-        
-        response = Response({'response': 'Регистрация прошла успешно'}, status=201)
-        
-        response.set_cookie(
-            key='refresh_token',
-            value=str(refresh),
-            httponly=True,
-            samesite='Lax', # Возможно поменять, если будут ошибки
-            secure=False  # Поставить True, если используется HTTPS
-        )
-        response.set_cookie(
-            key='access_token',
-            value=str(refresh.access_token),
-            httponly=True,
-            samesite='Lax', # Возможно поменять, если будут ошибки
-            secure=False  # Поставить True, если используется HTTPS
-        )
-        
-        return response
-    
+        serializer.save()
+                
+        return Response({'response': 'Регистрация прошла успешно'}, status=201)
 
-class LoginView(ViewSet):
-    serializer_class = LoginSerializer
-    
-    @action(
-        methods=['POST'],
-        detail=False
-    )
-    def login(self, request: HttpRequest):
-        serializer = self.serializer_class(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        user: UserModel = serializer.validated_data
-        refresh = RefreshToken.for_user(user)
 
-        response = Response({'response': user.info}, status=200)
+class CookieTokenObtainPairView(TokenObtainPairView):
+    
+    def post(self, request, *args, **kwargs):
+        response = super().post(request, *args, **kwargs)
         
-        response.set_cookie(
-            key='refresh_token',
-            value=str(refresh),
-            httponly=True,
-            samesite='Lax', # Возможно поменять, если будут ошибки
-            secure=False  # Поставить True, если используется HTTPS
-        )
-        response.set_cookie(
-            key='access_token',
-            value=str(refresh.access_token),
-            httponly=True,
-            samesite='Lax', # Возможно поменять, если будут ошибки
-            secure=False  # Поставить True, если используется HTTPS
-        )        
+        if response.status_code == 200:
+            access = response.data.get('access')
+            refresh = response.data.get('refresh')
+            
+            response = set_cookies(response=response, access=access, refresh=refresh)
+            response.data['response'] = 'Вы авторизованы!'
+            del response.data['access']
+            del response.data['refresh']
+        
         return response

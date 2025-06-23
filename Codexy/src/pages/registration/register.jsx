@@ -4,9 +4,14 @@ import styles from './registration.module.css';
 import dataForm from './registerData';
 import Button from '../../utils/button/button';
 import { registration } from '../../requests/registration/registartion'
+import { useUser } from '../../contexts/UserContext';
+import { useNavigate } from "react-router-dom";
 
 
 export default function Register() {
+  const { setUser } = useUser()
+  const navigate = useNavigate()
+  
   const [formData, setData] = useState({
     'name': '',
     'tag': '',
@@ -35,8 +40,7 @@ export default function Register() {
       
       setError(errorRespData) // Ставим ошибки
     } else {
-      setError({'tag': '', 'email': '','password': '',})
-      console.log('Регистрация прошла успешно!')
+      navigate('/login')
     }
   }
   

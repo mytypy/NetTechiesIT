@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from ..models import UserModel
-from ..validators import validate
-from django.contrib.auth import authenticate
+from ..utils import validate
 
 
 class RegistrationSerializer(serializers.ModelSerializer):
@@ -31,25 +30,5 @@ class RegistrationSerializer(serializers.ModelSerializer):
         
         return value
     
-    # def validate_phone(self, value: str):
-    #     if UserModel.objects.filter(phone=value).exists():
-    #         raise serializers.ValidationError("Пользователь с таким номером телефона уже существует.")
-        
-    #     return value
-    
     def create(self, validated_data):
         return UserModel.objects.create_user(**validated_data)
-
-
-class LoginSerializer(serializers.Serializer):
-    email = serializers.EmailField()
-    password = serializers.CharField()
-    
-    def validate(self, data):
-        user = authenticate(email=data['email'], password=data['password'])
-        
-        if not user:
-            raise serializers.ValidationError("Неверный email или пароль.")
-        
-        return user
-        

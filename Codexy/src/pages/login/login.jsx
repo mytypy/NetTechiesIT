@@ -1,12 +1,17 @@
-import { use, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './login.module.css';
 import DataForm from './loginData';
 import Button from '../../utils/button/button';
 import { login } from '../../requests/login/login'
+import { useUser } from "../../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Login() {
+  const { setUser } = useUser();
+  const navigate = useNavigate();
+
   const [formData, setData] = useState({
     'email': '',
     'password': ''
@@ -22,15 +27,14 @@ export default function Login() {
 
     if (requestLogin.status != 200) {
 
-      const resp = requestLogin.resp.response
       setError(() => ({
-        'password': resp.data.non_field_errors[0]
+        'password': "Неверный логин или пароль"
       }))
 
     } else {
-
-      console.log('Логин прошел успешно!')
-      setError({'password': ''})
+      const user = requestLogin.resp.data.response
+      setUser(user)
+      navigate('/')
     }
   }
 

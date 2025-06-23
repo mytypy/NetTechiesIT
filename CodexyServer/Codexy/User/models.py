@@ -15,7 +15,7 @@ class MyUserManager(BaseUserManager):
         
         user.save(using=self._db)
         return user
-    
+
     
 class UserModel(AbstractBaseUser):
     name = models.CharField(max_length=120)
@@ -23,6 +23,7 @@ class UserModel(AbstractBaseUser):
     email = models.EmailField(unique=True)
     birthday = models.DateField(blank=True, null=True, default="2000-01-01")
     phone = models.CharField(max_length=20, blank=True, default="Не указан")
+    title = models.CharField(max_length=128, blank=True, default='Без описания')
     
     objects = MyUserManager()
     USERNAME_FIELD = "email"
@@ -33,9 +34,11 @@ class UserModel(AbstractBaseUser):
     @property
     def info(self):
         return {
+            "id":self.pk,
             "name": self.name,
             "tag": self.tag, 
             "email": self.email, 
             "birthday": self.birthday, 
-            "phone": self.phone
+            "phone": self.phone, 
+            "title": self.title
         }
