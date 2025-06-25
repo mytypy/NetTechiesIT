@@ -29,7 +29,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'django_extensions',
-    'User'
+    'User',
+    'Friends'
 ]
 
 MIDDLEWARE = [
@@ -158,3 +159,5 @@ REST_FRAMEWORK = {
         'User.auth.auth_backend.CookieJWTAuthentication',
     )
 }
+
+APPEND_SLASH = False
