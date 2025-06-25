@@ -1,22 +1,25 @@
+import { Link } from "react-router"
+
+
 export default function Widgets() {
     return (
         <>
         <nav>
             <ul>
                 <li>
-                    <a href="#" title="Profile"><i className="fas fa-user"></i></a>
+                    <Link to="/" title="Profile" className="fas fa-user"></Link>
                 </li>
 
                 <li>
-                    <a href="#" title="Messages"><i className="fas fa-comment-dots"></i></a>
+                    <Link to="/messages" title="Messages" className="fas fa-comment-dots"></Link>
                 </li>
 
                 <li>
-                    <a href="#" title="Friends"><i className="fas fa-user-friends"></i></a>
+                    <Link to="/friends" title="Friends" className="fas fa-user-friends"></Link>
                 </li>
 
                 <li>
-                    <a href="#" title="Settings"><i className="fas fa-cog"></i></a>
+                    <Link to="/settings" title="Settings" className="fas fa-cog"></Link>
                 </li>
             </ul>
         </nav>

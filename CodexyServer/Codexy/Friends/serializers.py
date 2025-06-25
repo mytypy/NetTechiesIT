@@ -5,13 +5,13 @@ from friendship.models import Friend
 
 class FriendsSerializer(serializers.Serializer):
     sender = serializers.IntegerField()
-    recipient = serializers.IntegerField()
+    recipient = serializers.IntegerField(required=False)
     
     def validate_sender(self, value: int):
         sender = UserModel.objects.filter(pk=value)
         
         if sender.exists():
-            return sender[0]
+            return value
         
         raise serializers.ValidationError('sender`а не существует')
     
@@ -19,9 +19,17 @@ class FriendsSerializer(serializers.Serializer):
         recipient = UserModel.objects.filter(pk=value)
         
         if recipient.exists():
-            return recipient[0]
+            return value
         
         raise serializers.ValidationError('recipient`а не существует')
     
     def create(self, validated_data):
-        return Friend.objects.add_friend(**validated_data).accept()
+        try:
+            sende = UserModel.objects.get(pk=validated_data['sender'])
+            rec = UserModel.objects.get(pk=validated_data.get('recipient'))
+        except Exception:
+            return {'message': 'recipient`а не существует', 'code': 400}
+        
+        Friend.objects.add_friend(from_user=sende, to_user=rec).accept()
+        
+        return {'message': "Вы теперь друзья :)", 'code': 201}

@@ -1,0 +1,163 @@
+
+
+    .wrapper {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 80px;
+      background-color: #ffffff;
+      padding: 24px 0;
+      box-shadow: 2px 0 6px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .sidebar h2 {
+      font-size: 16px;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .sidebar nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 0;
+      align-items: center;
+    }
+
+    .sidebar nav a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 20px;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .sidebar nav a:hover {
+      background-color: var(--hover);
+      color: var(--accent);
+    }
+
+    .container {
+      flex: 1;
+      padding: 40px;
+    }
+
+    .friendsList {
+      background: var(--card);
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .friendsList h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .searchBar {
+      margin-bottom: 20px;
+    }
+
+    .searchBar input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    .friend {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .friend:last-child {
+      border-bottom: none;
+    }
+
+    .friendInfo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .friend img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .friendDetails {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .friendName {
+      font-weight: 600;
+    }
+
+    .friendStatus {
+      font-size: 13px;
+      color: var(--gray);
+    }
+
+    .messageBtn {
+      background-color: var(--accent);
+      border: none;
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .messageBtn:hover {
+      background-color: #1990da;
+    }
+
+    @media (max-width: 768px) {
+      .wrapper {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+        padding: 16px;
+      }
+
+      .sidebar nav ul {
+        flex-direction: row;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      .friend {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .messageBtn {
+        margin-top: 8px;
+        width: 100%;
+      }
+    }
